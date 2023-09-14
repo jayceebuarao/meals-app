@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:meals_app/models/category.dart';
 
 class CategoriesGridItem extends StatelessWidget {
   const CategoriesGridItem({super.key, required this.category});
@@ -8,6 +8,25 @@ class CategoriesGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+        colors: [
+          category.color.withOpacity(0.80),
+          category.color.withOpacity(0.16)
+        ],
+        begin: Alignment.bottomRight,
+        end: Alignment.topLeft,
+      )),
+      child: Text(
+        category.title,
+        style: Theme.of(context)
+            .textTheme
+            .titleLarge!
+            .copyWith(color: Theme.of(context).colorScheme.onBackground),
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 }
