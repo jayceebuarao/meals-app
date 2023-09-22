@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealsListItem extends StatelessWidget {
   const MealsListItem({super.key, required this.meal});
 
   final Meal meal;
+
+  String get complexityText {
+    return meal.complexity.name[0].toUpperCase() +
+        meal.complexity.name.substring(1);
+  }
+
+  String get affordabilityText {
+    return meal.affordability.name[0].toUpperCase() +
+        meal.affordability.name.substring(1);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +43,31 @@ class MealsListItem extends StatelessWidget {
               child: Container(
                 color: Colors.black45,
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  meal.title,
-                  style: const TextStyle(color: Colors.white, fontSize: 18),
-                  softWrap: true,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                child: Column(
+                  children: [
+                    Text(
+                      meal.title,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
+                    const SizedBox(width: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        MealItemTrait(
+                            icon: Icons.schedule,
+                            trait: '${meal.duration} mins'),
+                        MealItemTrait(
+                            icon: Icons.attach_money, trait: affordabilityText),
+                        MealItemTrait(icon: Icons.work, trait: complexityText),
+                      ],
+                    )
+                  ],
                 ),
               ),
             ),
