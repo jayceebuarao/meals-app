@@ -51,19 +51,11 @@ class MealDetailScreen extends StatelessWidget {
           SliverList(
               delegate:
                   SliverChildBuilderDelegate((BuildContext context, int index) {
-            return Row(
-              children: [
-                Text(
-                  '${index + 1}. ',
-                  style: const TextStyle(color: Colors.white),
-                ),
-                Text(
-                  meal.steps[index],
-                  style: const TextStyle(color: Colors.white),
-                  softWrap: true,
-                  overflow: TextOverflow.clip,
-                ),
-              ],
+            return Text(
+              '${index + 1}. ${meal.steps[index]}',
+              style: const TextStyle(color: Colors.white),
+              softWrap: true,
+              overflow: TextOverflow.clip,
             );
           }, childCount: meal.steps.length)),
         ],
