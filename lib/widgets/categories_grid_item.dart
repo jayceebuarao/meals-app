@@ -16,11 +16,11 @@ class CategoriesGridItem extends StatelessWidget {
     return InkWell(
       onTap: onSelectCategory,
       splashColor: Theme.of(context).primaryColor,
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(12),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(12),
             gradient: LinearGradient(
               colors: [
                 category.color.withOpacity(0.80),
