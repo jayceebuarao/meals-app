@@ -1,16 +1,20 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/screens/meal_detail_screen.dart';
 import 'package:meals_app/widgets/meals_list_item.dart';
 
 class MealsScreen extends StatelessWidget {
-  const MealsScreen({
+  MealsScreen({
     super.key,
     this.title,
+    this.isFavScreen,
     required this.meals,
   });
 
   final String? title;
+  bool? isFavScreen = false;
   final List<Meal> meals;
 
   void _selectMeal(BuildContext context, Meal meal) {
@@ -33,14 +37,25 @@ class MealsScreen extends StatelessWidget {
 
     if (meals.isEmpty) {
       content = Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text('Nothing here!'),
+          Text(
+            'Nothing here!',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
+          ),
           const SizedBox(
             height: 8,
           ),
           Text(
-            'Try selecting a different category!',
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            isFavScreen!
+                ? 'Try adding recipes to your favorites!'
+                : 'Try selecting a different category!',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   color: Theme.of(context).colorScheme.onBackground,
                 ),
           )
