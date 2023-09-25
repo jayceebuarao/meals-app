@@ -8,7 +8,7 @@ class MealsListItem extends StatelessWidget {
       {super.key, required this.meal, required this.onSelectMeal});
 
   final Meal meal;
-  final Function() onSelectMeal;
+  final void Function(Meal meal) onSelectMeal;
 
   String get complexityText {
     return meal.complexity.name[0].toUpperCase() +
@@ -28,7 +28,9 @@ class MealsListItem extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
-        onTap: onSelectMeal,
+        onTap: () {
+          onSelectMeal(meal);
+        },
         splashColor: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(12),
         child: Stack(

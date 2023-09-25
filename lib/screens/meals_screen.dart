@@ -22,13 +22,14 @@ class MealsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget content = ListView.builder(
-        itemCount: meals.length,
-        itemBuilder: (context, index) => MealsListItem(
-              meal: meals[index],
-              onSelectMeal: () {
-                _selectMeal(context, meals[index]);
-              },
-            ));
+      itemCount: meals.length,
+      itemBuilder: (context, index) => MealsListItem(
+        meal: meals[index],
+        onSelectMeal: (meal) {
+          _selectMeal(context, meal);
+        },
+      ),
+    );
 
     if (meals.isEmpty) {
       content = Column(
