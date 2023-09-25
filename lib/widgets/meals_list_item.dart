@@ -45,7 +45,17 @@ class MealsListItem extends StatelessWidget {
               left: 0,
               right: 0,
               child: Container(
-                color: Colors.black45,
+                // color: Colors.black45,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment(0.0, 0.5),
+                    end: Alignment.topCenter,
+                    colors: <Color>[
+                      Color.fromARGB(167, 0, 0, 0),
+                      Color(0x00000000),
+                    ],
+                  ),
+                ),
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
