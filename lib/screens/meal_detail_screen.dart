@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class MealDetailScreen extends StatelessWidget {
   const MealDetailScreen({super.key, required this.meal});
@@ -18,27 +19,33 @@ class MealDetailScreen extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 meal.title,
+                // textAlign: TextAlign.center,
               ),
-              titlePadding: const EdgeInsets.all(16),
-              background: Stack(fit: StackFit.expand, children: [
-                Image(
-                  image: NetworkImage(meal.imageUrl),
-                  fit: BoxFit.cover,
-                ),
-                const DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment(0.0, 0.5),
-                      end: Alignment.center,
-                      colors: <Color>[
-                        Color(0x80000000),
-                        Color(0x00000000),
-                      ],
-                    ),
+              background: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image(
+                    image: NetworkImage(meal.imageUrl),
+                    fit: BoxFit.cover,
                   ),
-                )
-              ]),
+                  const DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment(0.0, 0.5),
+                        end: Alignment.center,
+                        colors: <Color>[
+                          Color(0x80000000),
+                          Color(0x00000000),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
+            actions: [
+              IconButton(onPressed: () {}, icon: const Icon(Icons.star))
+            ],
           ),
           SliverPadding(
             padding: const EdgeInsets.symmetric(vertical: 16),
@@ -97,6 +104,17 @@ class MealDetailScreen extends StatelessWidget {
                 );
               },
               childCount: meal.steps.length,
+            ),
+          ),
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Container(
+              height: MediaQuery.of(context).size.height / 3,
+              child: Icon(
+                Symbols.cooking_rounded,
+                size: 75,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
           ),
         ],
