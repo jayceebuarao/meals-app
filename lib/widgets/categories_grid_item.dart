@@ -24,7 +24,7 @@ class CategoriesGridItem extends StatelessWidget {
             gradient: LinearGradient(
               colors: [
                 category.color.withOpacity(0.80),
-                category.color.withOpacity(0.24)
+                category.color.withOpacity(0.32)
               ],
               begin: Alignment.bottomRight,
               end: Alignment.topLeft,
