@@ -1,27 +1,24 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/screens/meal_detail_screen.dart';
 import 'package:meals_app/widgets/meals_list_item.dart';
 
 class MealsScreen extends StatelessWidget {
-  MealsScreen({
+  const MealsScreen({
     super.key,
     this.title,
-    this.isFavScreen,
+    this.isFavScreen = false,
     required this.meals,
     required this.onToggleFavorite,
   });
 
   final String? title;
-  bool? isFavScreen = false;
+  final bool isFavScreen;
   final List<Meal> meals;
 
   final void Function(Meal meal) onToggleFavorite;
 
   void _selectMeal(BuildContext context, Meal meal) {
-    print('_selectMeal Called');
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => MealDetailScreen(
               meal: meal,
