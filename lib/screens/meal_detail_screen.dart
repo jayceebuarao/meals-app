@@ -17,7 +17,7 @@ class MealDetailScreen extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             pinned: true,
-            stretch: true,
+            // stretch: true,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
@@ -48,10 +48,18 @@ class MealDetailScreen extends StatelessWidget {
             ),
             actions: [
               IconButton(
-                  onPressed: () {
-                    onToggleFavorite(meal);
-                  },
-                  icon: const Icon(Icons.star))
+                onPressed: () {
+                  onToggleFavorite(meal);
+                },
+                icon: const Icon(
+                  Icons.star_rounded,
+                  color: Colors.white,
+                  size: 32,
+                  shadows: <Shadow>[
+                    Shadow(color: Colors.black, blurRadius: 10.0)
+                  ],
+                ),
+              )
             ],
           ),
           SliverPadding(
@@ -116,7 +124,7 @@ class MealDetailScreen extends StatelessWidget {
           SliverFillRemaining(
             hasScrollBody: false,
             child: Container(
-              height: MediaQuery.of(context).size.height / 3,
+              height: MediaQuery.of(context).size.height / 2.5,
               child: Icon(
                 Symbols.cooking_rounded,
                 size: 75,
