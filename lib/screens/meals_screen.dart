@@ -54,7 +54,7 @@ class MealsScreen extends StatelessWidget {
             height: 8,
           ),
           Text(
-            isFavScreen!
+            isFavScreen
                 ? 'Try adding recipes to your favorites!'
                 : 'Try selecting a different category!',
             textAlign: TextAlign.center,
