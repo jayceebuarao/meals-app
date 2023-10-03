@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:meals_app/screens/tabs.dart';
-// import 'package:meals_app/widgets/main_drawer.dart';
 
 enum Filter {
   glutenFree,
@@ -24,9 +22,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
   var _vegetarianFilterSet = false;
   var _veganFilterSet = false;
 
+  /// @desc set filter variables to previously set values
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _glutenFreeFilterSet = widget.currentFIlters[Filter.glutenFree]!;
     _lactoseFreeFilterSet = widget.currentFIlters[Filter.lactoseFree]!;
@@ -40,13 +38,6 @@ class _FiltersScreenState extends State<FiltersScreen> {
       appBar: AppBar(
         title: const Text('Your Filters'),
       ),
-      // drawer: MainDrawer(onSelectScreen: (identifier) {
-      //   Navigator.of(context).pop();
-      //   if (identifier == 'meals') {
-      //     Navigator.of(context).push(
-      //         MaterialPageRoute(builder: (context) => const TabsScreen()));
-      //   }
-      // }),
       body: WillPopScope(
         onWillPop: () async {
           Navigator.of(context).pop({

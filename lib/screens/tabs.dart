@@ -36,6 +36,9 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
         .showSnackBar(SnackBar(content: Text(message)));
   }
 
+  /// @desc on trigger, take passed param of type Meal and check if meal
+  /// exists in _favoriteMeals list, if true = remove from list,
+  /// else false = add to list.
   void _toggleMealFavoriteStatus(Meal meal) {
     final isExisting = _favoriteMeals.contains(meal);
 

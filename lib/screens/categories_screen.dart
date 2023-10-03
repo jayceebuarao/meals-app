@@ -15,6 +15,12 @@ class CategoriesScreen extends StatelessWidget {
   final void Function(Meal meal) onToggleFavorite;
   final List<Meal> availableMeals;
 
+/**
+ * @desc when category is selected, take in type Category parameter of selected category
+ * and sort through all meals under that category and store to List of type Meal 'categorizedMeal'
+ * 
+ * Navigate to MealsScreen with sorted list of meals
+ */
   void _selectCategory(BuildContext context, Category category) {
     List<Meal> categorizedMeal = availableMeals
         .where((element) => element.categories.contains(category.id))

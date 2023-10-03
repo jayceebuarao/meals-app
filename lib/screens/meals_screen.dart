@@ -18,6 +18,8 @@ class MealsScreen extends StatelessWidget {
 
   final void Function(Meal meal) onToggleFavorite;
 
+  /// @desc when meal is selected, the parameter of Type Meal is taken
+  /// and passed to MealDetailScreen during navigation change
   void _selectMeal(BuildContext context, Meal meal) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => MealDetailScreen(
