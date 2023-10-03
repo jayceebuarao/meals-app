@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meals_app/providers/favorites_provider.dart';
 
-class MealDetailScreen extends StatelessWidget {
-  const MealDetailScreen(
-      {super.key, required this.meal, required this.onToggleFavorite});
+class MealDetailScreen extends ConsumerWidget {
+  const MealDetailScreen({
+    super.key,
+    required this.meal,
+  });
 
   final Meal meal;
 
-  final void Function(Meal meal) onToggleFavorite;
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -49,7 +51,15 @@ class MealDetailScreen extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: () {
-                  onToggleFavorite(meal);
+                  final wasAdded = ref
+                      .read(favoriteMealsProvider.notifier)
+                      .toggleMealFavoriteStatus(meal);
+
+                  ScaffoldMessenger.of(context).clearSnackBars();
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(wasAdded
+                          ? 'Added to favorites!'
+                          : 'Removed from favorites!')));
                 },
                 icon: const Icon(
                   Icons.star_rounded,
