@@ -31,9 +31,12 @@ class MealDetailScreen extends ConsumerWidget {
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Image(
-                    image: NetworkImage(meal.imageUrl),
-                    fit: BoxFit.cover,
+                  Hero(
+                    tag: meal.id,
+                    child: Image(
+                      image: NetworkImage(meal.imageUrl),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   const DecoratedBox(
                     decoration: BoxDecoration(
